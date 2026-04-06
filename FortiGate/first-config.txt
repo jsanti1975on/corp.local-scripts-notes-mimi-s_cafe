@@ -1,1 +1,4 @@
 # FortiGate Controller - IoT Lab/Den ready for firewall mounts and configs
+
+## FortiGate cmds used.
+- `execute factoryreset`
