@@ -1,5 +1,9 @@
-Get-DnsServerResourceRecord -ZoneName "dubz-vault.corp" -RRType "A" |
+Get-DnsServerResourceRecord -ZoneName "your-domain.local" -RRType "A" |
+Where-Object {
+    $_.Hostname -notmatch "DomainDnsZones|ForestDnsZones" -and
+    $_.Hostname -ne "@"
+} |
 Select-Object `
-    HostName,
-    @{Name="IP";Expression={$_.RecordData.IPv4Address}} |
-Export-Csv "C:\temp\dns-a-records.csv" -NoTypeInformation
+Hostname,
+@{Name="IP";Expression={$_.RecordData.IPv4Address}} |
+Export-Csv "C:\Users\jsantiago\Desktop\dns-a-records-clean.csv" -NoTypeInformation
