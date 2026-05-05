@@ -5,6 +5,6 @@ Where-Object {
 } |
 Select-Object `
 Hostname,
-@{Name="FQDN";Expression={ "$($_.Hostname).dubz-fort.corp" }},
+@{Name="FQDN";Expression={ "$($_.Hostname).your-domain.local" }},
 @{Name="IP";Expression={$_.RecordData.IPv4Address}} |
 Export-Csv "C:\Users\jsantiago\Desktop\dns-a-records-clean.csv" -NoTypeInformation
