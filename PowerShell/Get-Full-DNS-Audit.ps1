@@ -3,10 +3,37 @@
 # Purpose: Validate A, PTR, SRV, DC locator, and DNS health
 # ==========================================================
 
+# =========================================================
+# NOTE:
+# The DNS audit script requires the DnsServer PowerShell
+# module in order to use cmdlets such as:
+#
+#   Get-DnsServerResourceRecord
+#
+# On systems where the DNS Server role is not installed
+# (such as FSRM or management servers), the script will
+# fail with:
+#
+#   CommandNotFoundException
+#
+# Resolution:
+# Install the RSAT DNS Server management tools:
+#
+#   Install-WindowsFeature RSAT-DNS-Server
+#
+# After installation, restart PowerShell and verify:
+#
+#   Get-Command Get-DnsServerResourceRecord
+#
+# This issue does NOT indicate DNS failure.
+# It only indicates the required DNS management module
+# was missing from the host executing the script.
+# =========================================================
+
 $Domain      = "your-domain.local"
 $ReverseZone = "10.10.10.in-addr.arpa" # Adjust to the subnet
 $DnsServer   = "enter-hostname"
-$ReportPath  = "C:\Users\jsantiago\Desktop\dns-full-audit-report.csv" # Adjust to your out path 
+$ReportPath  = "C:\Users\testUser\Desktop\dns-full-audit-report.csv" # Adjust to your out path 
 
 $Results = @()
 
