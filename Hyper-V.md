@@ -1,31 +1,18 @@
-## Infrastructure Build – Day Recap
+## Remote Hyper-V Administration via SSH + PowerShell
 
-### Phase: Hypervisor Deployment → File Server RBAC
+One of the biggest milestones in this lab journey was successfully managing the Hyper-V infrastructure remotely using SSH and native PowerShell.
 
-The environment was transitioned to a Microsoft-based infrastructure by deploying Hyper-V on a Windows Server host. This decision aligned the lab with enterprise standards and enabled tight integration with Active Directory.
+In this stage of the `dubz-fort.corp` environment buildout, the Hyper-V host was configured with OpenSSH Server, allowing secure remote administration directly from a workstation terminal using PuTTY.
 
-A centralized file server (FSRM01) was configured with departmental shares:
+The screenshot below captures the moment the Exchange virtual machine (`_EXCH01_`) was powered on remotely through PowerShell over SSH.
 
-- Sales$
-- Finance$
-- Operations$
-- Public
+### Commands Used
 
-NTFS permissions were hardened by removing default “Users” access and implementing role-based access control using AD security groups.
+```powershell
+Get-VM
 
-### Validation
+Start-VM -Name "_EXCH01_"
 
-Real user testing was performed by logging in as a Sales user (mike.sales), who successfully created data within the Sales share, confirming correct permissions.
-
-### Outcome
-
-- Functional Hyper-V environment
-- RBAC enforced across file shares
-- Verified user-based access control
-- Foundation established for secure data workflows
-
-### Next Phase
-
-- Finance access isolation testing
-- AES encryption integration into data pipeline
-- GPO-based drive mapping
+Get-VM "_EXCH01_" | Select Name,State,Uptime
+```
+<img width="1591" height="550" alt="Putty-To-Hyper-V-01" src="https://github.com/user-attachments/assets/f450e517-0e74-4b8c-85c4-53cabbef9291" />
