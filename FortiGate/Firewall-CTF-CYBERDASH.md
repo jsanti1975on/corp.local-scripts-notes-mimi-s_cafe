@@ -316,3 +316,7 @@ This was demonstrated when the built-in HTTP service object failed because the d
 ## Outcome
 
 The cyber range now operates with a segmented, policy-driven architecture that more closely resembles enterprise network deployments while supporting Active Directory training, CTF exercises, and future cybersecurity coursework.
+
+
+## Support Screenshot
+<img width="1907" height="934" alt="2026-05-29 19_44_28-sec - VMware Workstation" src="https://github.com/user-attachments/assets/db35192f-f24f-4533-8b2e-f81339a6c3ad" />
